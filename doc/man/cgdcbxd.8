@@ -35,7 +35,10 @@ the net_prio.ifpriomap.
 
 When a new application tuple is identified \fBcgdcbxd\fR creates a control group
 under the net_prio subsystem using the directory
-\fBcgdcbx-{cee|ieee}-<selector>-<protocolID>\fR.
+\fBcgdcbx-<selector>-<protocolID>\fR.
+
+The \fB<selector>\fR field uses the IEEE selector values listed above for both CEE
+DCBX and IEEE DCBX versions.
 
 This control group will be managed by \fBcgdcbx\fR and the \fBifpriomap\fR will
 be kept in sync with the application TLV. If a DCB netlink event removes the
@@ -47,9 +50,6 @@ applications and users to DCBX selector-protocolID tuples. Note protocol ID and
 selector values use the well-known protocol type and port or ethertype defined
 by the IANA (Internet Assigned Numbers Authority) the application are not
 required to use the well-known ports this is only used to identify the application.
-
-CEE and IEEE values indicate the application TLV type in both cases the IEEE
-selector values are used.
 
 .SH OPTIONS
 .TP

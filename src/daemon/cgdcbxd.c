@@ -60,7 +60,6 @@ static void usage(int status, const char *program_name)
 			"options:\n"
 			"   -h  show this usage\n"
 			"   -n  don't fork daemon\n"
-			"   -s  symlink port numbers with well-known strings\n"
 			"   -v  verbose mode\n",
 			program_name);
 	} else {
@@ -198,13 +197,11 @@ static void cgdcbx_modify_cgroup(struct cgdcbx_entry *np,
 	    np->app.protocol == 0)
 		snprintf(file, sizeof(file), "/");
 	else if (np->app.selector == 1) {
-		snprintf(file, sizeof(file), "cgdcb-%s-%i-%04x",
-			 iface->mode == DCB_CAP_DCBX_VER_IEEE ? "ieee" : "cee",
+		snprintf(file, sizeof(file), "cgdcb-%i-%04x",
 			 np->app.selector,
 			 np->app.protocol);
 	} else {
-		snprintf(file, sizeof(file), "cgdcb-%s-%i-%i",
-			 iface->mode == DCB_CAP_DCBX_VER_IEEE ? "ieee" : "cee",
+		snprintf(file, sizeof(file), "cgdcb-%i-%i",
 			 np->app.selector,
 			 np->app.protocol);
 	}
